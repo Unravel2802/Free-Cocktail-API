@@ -2,7 +2,7 @@
 
 ## Project Ideas
 
-Since the goal is to show a random cocktail recipe with images, here are some engaging extra features to include:
+Some engaging features to include:
 
 * **"Surprise Me" Cocktail Generator**
   User clicks a big “Shake it!” button → shows a random cocktail with name, image, ingredients, and instructions.
