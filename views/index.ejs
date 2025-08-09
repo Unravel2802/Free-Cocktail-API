@@ -2,5 +2,15 @@
 
 <h1> Welcome to the Cocktail Roulette website!</h1>
 
+<form action="/random" method="GET">
+    <input type="submit" value="Shake it">
+</form>
+
+<% if (locals.name) { %>
+    <h2> <%= name %></h2>
+    <p> <%= instructions %> </p>
+<% } else { %>
+    <h2> Waiting for data </h2>
+<% } %>  
 <%- include('partials/footer.ejs') %>
     
