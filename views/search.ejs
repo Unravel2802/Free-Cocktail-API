@@ -1,0 +1,24 @@
+<%- include('partials/header.ejs') %>
+
+<div class="searchByIngredient">
+    <h2>Search for drinks with the ingredient you have</h2>
+    <form action="/search-by-ingredient" method="post">
+        <label for="ingredientInput">Enter your ingredient:</label>
+        <input type="text" id="ingredientInput" name="ingredient">
+        <button type="submit">Search</button>
+    </form>    
+    <% if (locals.drinks) { %>
+        <ul>
+                <% drinks.forEach(d => { %>
+                    <li>
+                    <%= d.name %>
+                    <% if (d.image) { %>
+                        <img src="<%= d.image %>" alt="<%= d.name %>" width="100px">
+                    <% } %>
+                    </li>
+                <% }) %>
+        </ul>
+    <% } %>
+</div>
+
+<%- include('partials/footer.ejs') %>
