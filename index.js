@@ -10,6 +10,7 @@ let cachedDate = null;
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Daily Drink (default route) page
 app.get("/", async (req, res) => {
     const today = new Date().toDateString();
 
@@ -30,7 +31,7 @@ app.get("/", async (req, res) => {
 
 });
 
-// REST API
+// Random Drink Generator 
 app.get('/random', async (req, res) => {
     try {
         const response = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/random.php`);
@@ -44,11 +45,16 @@ app.get('/random', async (req, res) => {
         res.render("index.ejs", { content: JSON.stringify(error.response.data)});
     }
 });
+
+// Search by ingredient feature 
+// GET Method 
 app.get('/search-by-ingredient', (req, res) => {
-    res.render('search.ejs');
+    res.render('searchIngredient.ejs');
 })
+
+// POST Method
 app.post('/search-by-ingredient', async (req, res) => {
-    const ingredient = req.body.ingredient; // now works!
+    const ingredient = req.body.ingredient; 
     try {
         const response = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php`, {
             params:  { i: ingredient }
@@ -62,9 +68,29 @@ app.post('/search-by-ingredient', async (req, res) => {
         });
         }
 
-        res.render('search.ejs', { drinks: drinkData, ingredient });
+        res.render('searchIngredient.ejs', { drinks: drinkData, ingredient });
     } catch (error) {
-        res.render('search.ejs', { drinks: [], ingredient, error: 'No drinks found.' });
+        res.render('searchIngredient.ejs', { drinks: [], ingredient, error: 'No drinks found.' });
+  }
+});
+
+// Search by name feature
+// GET Method
+app.get('/search-by-name', (req, res) => {
+    res.render('searchName.ejs');
+})
+
+// POST Method
+app.post('/search-by-name', async (req, res) => {
+    const name = req.body.name; 
+    try {
+        const response = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php`, {
+            params:  { s: name }
+        });
+        const drink  = response.data.drinks[0];
+        res.render('searchName.ejs', { drink: drink, name });
+    } catch (error) {
+        res.render('searchName.ejs', { drink: [], name, error: 'No drinks found.' });
   }
 });
 
