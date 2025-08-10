@@ -1,38 +1,23 @@
 <%- include('partials/header.ejs') %>
 
-<h1> Welcome to the Cocktail Roulette website!</h1>
-
-<div class="form">
-    <form>
-        <input formaction="/" type="submit" value="Daily Drink"> 
-        <input formaction="/random" type="submit" value="Surprise Yourself!">
-    </form>
-</div>
-
 <div class="daily">
-    <h2> Drink of the day </h2>
     <% if (locals.dailyName) { %>
-        <h2> <%= dailyName %></h2>
+        <h2> Drink of the day </h2>
+        <h3> <%= dailyName %></h3>
         <p> <%= dailyInstructions %> </p>
         <img src="<%=dailyImg%>" height="300px"/>
-    <% } else { %>
-        <form action="/" method="GET">
-            <input type="submit" value="Daily Drink">
-        </form>
     <% } %>  
 </div>
 
 <div class="random">
     <% if (locals.name) { %>
-        <h2> <%= name %></h2>
+        <h2> A surprise drink for you!</h2>
+        <h3> <%= name %></h3>
         <p> <%= instructions %> </p>
         <img src="<%=img%>" height="300px"/>
-    <% } else { %>
-        <form id="shakeBtn" action="/random" method="GET">
-            <input type="submit" value="Surprise Yourself!">
-        </form>
     <% } %>  
 </div>
+
 
 <%- include('partials/footer.ejs') %>
     
