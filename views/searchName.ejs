@@ -1,0 +1,25 @@
+<%- include('partials/header.ejs') %>
+
+<div class="searchByName">
+    <h2>Search for drink by name</h2>
+    <form action="/search-by-name" method="post">
+        <label for="nameInput">Enter your drink's name:</label>
+        <input type="text" id="nameInput" name="name">
+        <button type="submit">Search</button>
+    </form>    
+
+    <% if(locals.drink) { %>
+        <%= drink.strDrink %>
+        <% if (drink.strDrinkThumb) { %>
+            <img src="<%= drink.strDrinkThumb %>" alt="<%= drink.name %>" width="100px">
+        <% } %>           
+    <% } %>
+</div>
+
+<div>
+    <p> Add this drink to your list? </p>
+    <form action="/list" method="post">
+        <input type="submit" value="Add to list">
+    </form>      
+</div>
+<%- include('partials/footer.ejs') %>
