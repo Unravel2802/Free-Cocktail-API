@@ -43,7 +43,30 @@ app.get('/random', async (req, res) => {
     } catch (error) {
         res.render("index.ejs", { content: JSON.stringify(error.response.data)});
     }
+});
+app.get('/search-by-ingredient', (req, res) => {
+    res.render('search.ejs');
 })
+app.post('/search-by-ingredient', async (req, res) => {
+    const ingredient = req.body.ingredient; // now works!
+    try {
+        const response = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php`, {
+            params:  { i: ingredient }
+        });
+        const drinks = response.data.drinks;
+        let drinkData = [];
+        for (let i = 0; i < 5; i++) {
+        drinkData.push({
+            name: drinks[i].strDrink,
+            image: drinks[i].strDrinkThumb
+        });
+        }
+
+        res.render('search.ejs', { drinks: drinkData, ingredient });
+    } catch (error) {
+        res.render('search.ejs', { drinks: [], ingredient, error: 'No drinks found.' });
+  }
+});
 
 app.listen(port, () => {
     console.log(`The server is running on port ${port}`);
