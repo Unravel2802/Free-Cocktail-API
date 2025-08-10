@@ -24,6 +24,9 @@ Some engaging features to include:
   A toggle for mocktail recipes using the same API.
   Helps make it more inclusive.
 
+* **Create your own cocktail list**
+  Allow user to add and remove cocktails from their list of cocktails. Maybe create different lists based on category.
+
 * **Recipe Card Download**
   Button to save the recipe as a shareable image/PDF.
 
