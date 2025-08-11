@@ -4,6 +4,7 @@ import axios from 'axios';
 
 const app = express();
 const port = 3000;
+let list = [];
 let cachedDrink = null;
 let cachedDate = null;
 
@@ -93,6 +94,22 @@ app.post('/search-by-name', async (req, res) => {
         res.render('searchName.ejs', { drink: [], name, error: 'No drinks found.' });
   }
 });
+
+// View cocktail list feature
+// GET Method
+app.get("/list", (req, res) => {
+    res.render("list.ejs", {drinks: list});
+})
+
+// POST Method
+app.post("/list", (req, res) => { 
+    const drink = req.body;
+    const added = list.some(d => d.drinkName === drink.drinkName);
+    if (!added) {
+        list.push(drink);
+    }
+    res.render('searchName.ejs');
+})
 
 app.listen(port, () => {
     console.log(`The server is running on port ${port}`);
