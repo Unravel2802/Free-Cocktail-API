@@ -1,0 +1,16 @@
+<%- include("partials/header.ejs") %>
+<h2> Your cocktail list </h2>
+    <% if (locals.drinks) { %>
+        <ul>
+                <% drinks.forEach(d => { %>
+                    <li>
+                    <%= d.drinkName %>
+                    <% if (d.drinkThumb) { %>
+                        <img src="<%= d.drinkThumb %>" alt="<%= d.drinkThumb %>" width="100px">
+                    <% } %>
+                    </li>
+                <% }) %>
+        </ul>
+    <% } %>
+<%- include("partials/footer.ejs") %>
+
