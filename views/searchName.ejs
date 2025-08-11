@@ -13,13 +13,18 @@
         <% if (drink.strDrinkThumb) { %>
             <img src="<%= drink.strDrinkThumb %>" alt="<%= drink.name %>" width="100px">
         <% } %>           
+    
+    <p> Add this drink to your list? </p>
+    
+    <form action="/list" method="post">
+        <input type="hidden" name="drinkName" value="<%= drink.strDrink %>">
+        <input type="hidden" name="drinkThumb" value="<%= drink.strDrinkThumb %>">
+        <input type="submit" value="Add to list">   
+     </form>   
+
     <% } %>
+
+    
 </div>
 
-<div>
-    <p> Add this drink to your list? </p>
-    <form action="/list" method="post">
-        <input type="submit" value="Add to list">
-    </form>      
-</div>
 <%- include('partials/footer.ejs') %>
