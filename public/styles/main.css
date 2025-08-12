@@ -1,3 +1,61 @@
-/* body {
-    background-color: black;
-} */
+main {
+  --bg:#0f172a;          
+  --panel:#111827;     
+  --card:#111827;        
+  --muted:#94a3b8;       
+  --text:#e5e7eb;       
+  --accent:#f59e0b;    
+  --ring:#334155;      
+  --radius:18px;
+  --shadow:0 10px 30px rgba(0,0,0,.35);
+} 
+
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: radial-gradient(1200px 800px at 10% 0%, #0b1228 0%, var(--bg) 55%);
+  color:var(--text);
+  line-height:1.6;
+}
+
+.header{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:22px;
+}
+.header h1{
+  margin:0;
+  font-weight:800;
+  letter-spacing:.2px;
+}
+.header .tabs{
+  display:flex; gap:8px; flex-wrap:wrap;
+}
+.tab{
+  padding:8px 12px;
+  border:1px solid var(--ring);
+  border-radius:999px;
+  background:transparent;
+  color:var(--text);
+  cursor:pointer;
+}
+.tab:hover{ border-color:var(--accent); color:#fff }
+
+.grid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap:24px;
+}
+@media (max-width: 800px){
+  .grid{ grid-template-columns: 1fr; }
+}
+
+.card{
+  background:linear-gradient(180deg, #111827, #0b1020 60%);
+  border:1px solid var(--ring);
+  border-radius:var(--radius);
+}
