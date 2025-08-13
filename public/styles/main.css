@@ -19,22 +19,53 @@ body{
   line-height:1.6;
 }
 
-.header{
-  display:flex;
-  flex-wrap:wrap;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  margin-bottom:22px;
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-.header h1{
-  margin:0;
-  font-weight:800;
-  letter-spacing:.2px;
+
+.header {
+  background: linear-gradient(90deg, #f59e0b, #ef4444); /* amber → red */
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
-.header .tabs{
-  display:flex; gap:8px; flex-wrap:wrap;
+
+.header h1 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin: 0;
 }
+
+.header form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.header form input[type="submit"] {
+  padding: 0.4rem 0.8rem;
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  border-radius: 999px;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.header form input[type="submit"]:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+
 .tab{
   padding:8px 12px;
   border:1px solid var(--ring);
